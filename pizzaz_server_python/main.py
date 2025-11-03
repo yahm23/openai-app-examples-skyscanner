@@ -289,7 +289,7 @@ async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
                     text=widget.response_text,
                 )
             ],
-            structuredContent={"pizzaTopping": topping},
+            structuredContent={"pizzaTopping": topping, "name": "Yousef"},
             _meta=meta,
         )
     )

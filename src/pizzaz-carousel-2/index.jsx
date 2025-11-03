@@ -4,6 +4,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import markers from "../pizzaz/markers.json";
 import PlaceCard from "./PlaceCard";
+import {useOpenAiGlobal} from "../use-openai-global";
 
 function App() {
   const places = markers?.places || [];
@@ -16,6 +17,7 @@ function App() {
   });
   const [canPrev, setCanPrev] = React.useState(false);
   const [canNext, setCanNext] = React.useState(false);
+  const toolOutput = useOpenAiGlobal("toolOutput");
 
   React.useEffect(() => {
     if (!emblaApi) return;
@@ -32,12 +34,14 @@ function App() {
     };
   }, [emblaApi]);
 
+  const name = toolOutput?.name;
+
   return (
     <div className="antialiased relative w-full text-black py-5 bg-white">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex gap-4 max-sm:mx-5 items-stretch">
           {places.map((place) => (
-            <PlaceCard key={place.id} place={place} />
+            <PlaceCard key={place.id} place={place} name={name} />
           ))}
         </div>
       </div>
