@@ -169,7 +169,7 @@ def _embedded_widget_resource(widget: PizzazWidget) -> types.EmbeddedResource:
 
 @mcp._mcp_server.list_tools()
 async def _list_tools() -> List[types.Tool]:
-    return [
+    tools = [
         types.Tool(
             name=widget.identifier,
             title=widget.title,
@@ -185,6 +185,20 @@ async def _list_tools() -> List[types.Tool]:
         )
         for widget in widgets
     ]
+
+    tools.append(types.Tool(
+        name="hello-yousef",
+        title="Greet Yousef",
+        description="A tool",
+        _meta={"invoking": "hello yousef", "invoked": "said hello"},
+        annotations={
+            "destructiveHint": False,
+            "openWorldHint": False,
+            "readOnlyHint": True,
+        }
+    ))
+
+    return tools
 
 
 @mcp._mcp_server.list_resources()
@@ -242,17 +256,36 @@ async def _handle_read_resource(req: types.ReadResourceRequest) -> types.ServerR
 async def _call_tool_request(req: types.CallToolRequest) -> types.ServerResult:
     widget = WIDGETS_BY_ID.get(req.params.name)
     if widget is None:
+        meta: Dict[str, Any] = {
+            "openai/toolInvocation/invoking": "hello yousef",
+            "openai/toolInvocation/invoked": "said hello",
+            "openai/resultCanProduceWidget": False,
+            "openai/widgetAccessible": True,
+        }
+
         return types.ServerResult(
             types.CallToolResult(
                 content=[
                     types.TextContent(
                         type="text",
-                        text=f"Unknown tool: {req.params.name}",
+                        text="found a new name",
                     )
                 ],
-                isError=True,
+                structuredContent={"name": "Charlie"},
+                _meta=meta,
             )
         )
+#         return types.ServerResult(
+#             types.CallToolResult(
+#                 content=[
+#                     types.TextContent(
+#                         type="text",
+#                         text=f"Unknown tool: {req.params.name}",
+#                     )
+#                 ],
+#                 isError=True,
+#             )
+#         )
 
     arguments = req.params.arguments or {}
     try:

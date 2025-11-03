@@ -1,7 +1,14 @@
 import React from "react";
 import { Star } from "lucide-react";
+import {useOpenAiGlobal} from "../use-openai-global";
 
 export default function PlaceCard({ place, name }) {
+  const callTool = useOpenAiGlobal("callTool");
+  const getNewName = async () => {
+    const newName = await callTool('hello', {pizzaTopping: "list"});
+    console.log('New name from tool:', newName);
+  }
+
   if (!place) return null;
   return (
     <div className="min-w-[220px] select-none max-w-[220px] w-[65vw] sm:w-[220px] self-stretch flex flex-col">
@@ -29,6 +36,7 @@ export default function PlaceCard({ place, name }) {
           <button
             type="button"
             className="cursor-pointer inline-flex items-center rounded-full bg-[#F46C21] text-white px-4 py-1.5 text-sm font-medium hover:opacity-90 active:opacity-100"
+            onClick={getNewName}
           >
             Learn more
           </button>
