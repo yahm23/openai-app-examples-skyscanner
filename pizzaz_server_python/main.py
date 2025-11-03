@@ -70,6 +70,15 @@ widgets: List[PizzazWidget] = [
         response_text="Rendered a pizza carousel!",
     ),
     PizzazWidget(
+        identifier="pizza-carousel-2",
+        title="Show Pizza Carousel 2",
+        template_uri="ui://widget/pizza-carousel-2.html",
+        invoking="Carousel some spots2",
+        invoked="Served a fresh carousel",
+        html=_load_widget_html("pizzaz-carousel-2"),
+        response_text="Rendered a pizza carousel!",
+    ),
+    PizzazWidget(
         identifier="pizza-albums",
         title="Show Pizza Album",
         template_uri="ui://widget/pizza-albums.html",

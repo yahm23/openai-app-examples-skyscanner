@@ -19,6 +19,7 @@ function AlbumCard({ album, onSelect }) {
         <div className="text-base font-medium truncate">{album.title}</div>
         <div className="text-sm text-black/60 mt-0.5">
           {album.photos.length} photos
+          Lorem Ipsum is this coming through?
         </div>
       </div>
     </button>

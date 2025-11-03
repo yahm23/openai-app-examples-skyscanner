@@ -19,6 +19,7 @@ const targets: string[] = [
   "solar-system",
   "pizzaz",
   "pizzaz-carousel",
+  "pizzaz-carousel-2",
   "pizzaz-list",
   "pizzaz-albums",
 ];
