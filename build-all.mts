@@ -20,6 +20,7 @@ const targets: string[] = [
   "pizzaz",
   "pizzaz-carousel",
   "pizzaz-carousel-2",
+  "skyscanner-card",
   "pizzaz-list",
   "pizzaz-albums",
 ];

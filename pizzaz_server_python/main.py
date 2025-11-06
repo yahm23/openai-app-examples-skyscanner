@@ -79,6 +79,15 @@ widgets: List[PizzazWidget] = [
         response_text="Rendered a pizza carousel!",
     ),
     PizzazWidget(
+        identifier="skyscanner-card",
+        title="Show Skyscanner Card",
+        template_uri="ui://widget/skyscanner-card.html",
+        invoking="find flight",
+        invoked="Here's a skyscanner card",
+        html=_load_widget_html("skyscanner-card"),
+        response_text="Rendered a card",
+    ),
+    PizzazWidget(
         identifier="pizza-albums",
         title="Show Pizza Album",
         template_uri="ui://widget/pizza-albums.html",

@@ -1,0 +1,71 @@
+@import "tailwindcss" source(".");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .overflow-auto > *,
+  .overflow-scroll > *,
+  .overflow-x-auto > *,
+  .overflow-y-auto > * {
+    scrollbar-color: auto;
+  }
+
+  /* Base style for scrollable elements */
+  .overflow-auto,
+  .overflow-scroll,
+  .overflow-x-auto,
+  .overflow-y-auto,
+  .overflow-x-scroll,
+  .overflow-y-scroll {
+    scrollbar-color: rgb(0, 0, 0, 0.1) transparent;
+
+    @media (prefers-color-scheme: dark) {
+      scrollbar-color: rgb(255, 255, 255, 0.1) transparent;
+    }
+  }
+
+  /* Hover state directly on the scrollable element */
+  .overflow-auto:hover,
+  .overflow-scroll:hover,
+  .overflow-x-auto:hover,
+  .overflow-y-auto:hover {
+    scrollbar-color: rgb(0, 0, 0, 0.2) transparent;
+
+    @media (prefers-color-scheme: dark) {
+      scrollbar-color: rgb(255, 255, 255, 0.2) transparent;
+    }
+  }
+}
+
+@theme {
+  /* Colors */
+  --color-sk-core-blue: rgba(0,98,227,1);
+  --color-sk-light-blue: rgba(227, 240, 255, 1);
+  --color-sk-heavy-border: rgba(13,13,13,0.15);
+  --color-sk-light-grey: rgba(232, 232, 232, 1);
+  --color-sk-grey: rgba(93, 93, 93, 1);
+
+
+  /* Border Spacing */
+  --border-width-sk-half: 0.5px;
+  --border-width-sk-one: 1px;
+
+  /* Text sizes */
+  --text-sk-pill: 13px;
+  --text-sk-main: 17px;
+  --text-sk-med: 18px;
+  --text-sk-large: 32px;
+
+  /* Border Radius */
+  --radius-pill: 40px;
+
+  /* Spacing */
+  --spacing-sk-divider: 40px;
+
+  /* Shadow */
+  --shadow-sk-shadow: 0 4px 16px 0 rgba(0,0,0,0.05);
+
+
+}

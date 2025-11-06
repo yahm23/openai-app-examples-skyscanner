@@ -38,3 +38,159 @@
     }
   }
 }
+
+@custom-variant device-ios (&:where([data-device="ios"] *));
+@custom-variant device-android (&:where([data-device="android"] *));
+
+@theme {
+  /* ------ */
+  /* Color Tokens */
+  --color-light-primary: #FFFFFF;
+  --color-light-secondary: #E8E8E8;
+  --color-light-tertiary: #F3F3F3;
+
+  --color-dark-primary: #212121;
+  --color-dark-secondary: #303030;
+  --color-dark-tertiary: #414141;
+
+  /* Text + Icons */
+  --color-light-text-primary: #0D0D0D;
+  --color-light-text-secondary: #5D5D5D;
+  --color-light-text-tertiary: #8F8F8F;
+  /*--color-light-text-inverted: #8F8F8F; ??? */
+
+  --color-dark-text-primary: #FFFFFF;
+  --color-dark-text-secondary: #CDCDCD;
+  --color-dark-text-tertiary: #AFAFAF;
+
+  /* Accents */
+  --color-accent-light-blue: #0285FF;
+  --color-accent-light-red: #E02E2A;
+  --color-accent-light-orange: #E25507;
+  --color-accent-light-green: #008635;
+
+  --color-accent-dark-blue: #0285FF;
+  --color-accent-dark-red: #FF8583;
+  --color-accent-dark-orange: #FF9E6C;
+  --color-accent-dark-green: #40C977;
+
+
+  /* Typography Tokens */
+  --font-sf-pro: system-ui, -apple-system, "SF Pro Text";
+  /*???*/
+
+
+  /* ------ */
+  /*Custom Token (mock)*/
+
+  /* Custom Colors */
+  --color-sk-core-blue: rgba(0,98,227,1);
+  --color-sk-light-blue: rgba(227, 240, 255, 1);
+  --color-sk-heavy-border: rgba(13,13,13,0.15);
+  --color-sk-light-grey: rgba(232, 232, 232, 1);
+  --color-sk-grey: rgba(93, 93, 93, 1);
+
+
+  /* Border Spacing */
+  --border-width-sk-half: 0.5px;
+  --border-width-sk-one: 1px;
+
+  /* Text sizes */
+  --text-sk-pill: 13px;
+  --text-sk-main: 17px;
+  --text-sk-med: 18px;
+  --text-sk-large: 32px;
+
+  /* Border Radius */
+  --radius-pill: 40px;
+
+  /* Spacing */
+  --spacing-sk-divider: 40px;
+
+  /* Shadow */
+  --shadow-sk-shadow: 0 4px 16px 0 rgba(0,0,0,0.05);
+}
+
+@utility font-base {
+  font-family: var(--font-sf-pro), serif;
+}
+
+@utility text-h1 {
+  @apply font-base text-4xl font-semibold leading-10;
+  letter-spacing: -0.1px;
+  @variant device-ios { font-size: 32px;}
+  @variant device-android { font-size: 32px;}
+}
+
+@utility text-h2 {
+  @apply font-base text-2xl font-semibold leading-7;
+  letter-spacing: -0.25px;
+}
+
+@utility text-h3 {
+  @apply font-base text-lg font-semibold leading-[26px];
+  letter-spacing: -0.45px;
+  @variant device-android { @apply text-base leading-0}
+}
+
+@utility text-body {
+  @apply font-base text-base font-normal leading-[26px];
+  letter-spacing: -0.4px;
+  @variant device-android { @apply leading-0}
+}
+
+@utility text-body-emphasis {
+  @apply text-body font-semibold;
+}
+
+@utility text-body-small {
+  @apply font-base text-sm font-normal leading-[18px];
+  letter-spacing: -0.3px;
+  @variant device-android { @apply leading-0}
+}
+
+@utility text-body-small-emphasis {
+  @apply text-body-small font-semibold;
+}
+
+@utility text-caption-small {
+  @apply text-xs font-base font-normal leading-4;
+  letter-spacing: -0.1px;
+  @variant device-android { @apply leading-0}
+}
+
+@utility text-caption-emphasis {
+  @apply text-caption-small font-semibold;
+}
+
+
+/* Custom Utils (mock) */
+@utility pill {
+  @apply bg-sk-light-blue w-min mx-auto py-1 px-3 text-sk-core-blue rounded-pill text-sk-pill;
+}
+
+@utility line-divider {
+  @apply border-solid border-sk-one border-sk-light-grey w-sk-divider h-0
+}
+
+@utility base-button {
+  @apply w-full rounded-full py-2.5 border-solid border-sk-one border-sk-heavy-border;
+}
+
+@utility blue-button {
+  @apply base-button bg-sk-core-blue text-white
+}
+
+@utility card-container {
+  @apply bg-white
+  border-sk-heavy-border
+  min-w-[360px]
+  border-solid
+  border-sk-half
+  shadow-sk-shadow
+  text-center
+  rounded-3xl
+  flex flex-col
+  max-w-[220px];
+  /*w-[65vw] sm:w-[220px] self-stretch*/
+}

@@ -4,6 +4,7 @@ import fg from "fast-glob";
 import path from "node:path";
 import fs from "node:fs";
 import tailwindcss from "@tailwindcss/vite";
+import svgr from 'vite-plugin-svgr'
 
 function buildInputs() {
   const files = fg.sync("src/**/index.{tsx,jsx}", { dot: false });
@@ -205,6 +206,11 @@ export default defineConfig(({}) => ({
   plugins: [
     tailwindcss(),
     react(),
+    svgr({
+      svgrOptions: {
+      //   TBC
+      },
+    }),
     multiEntryDevEndpoints({ entries: inputs }),
   ],
   cacheDir: "node_modules/.vite-react",
